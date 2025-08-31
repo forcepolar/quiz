@@ -1,0 +1,282 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: #1a202c;
+  color: white;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  color: #a0aec0;
+  font-size: 16px;
+}
+
+.screen {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.room-list {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.room-card {
+  background: #2d3748;
+  border-radius: 12px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #4a5568;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: #4facfe;
+}
+
+.room-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.room-players {
+  color: #a0aec0;
+  font-size: 14px;
+}
+
+.btn {
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #4a5568;
+  background: #2d3748;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.input::placeholder {
+  color: #a0aec0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a0aec0;
+  font-size: 14px;
+}
+
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #4a5568;
+  background: #2d3748;
+  color: white;
+  font-size: 16px;
+}
+
+.game-mode, .category-select {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.option-card {
+  background: #2d3748;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.option-card.selected {
+  border-color: #4facfe;
+  background: rgba(79, 172, 254, 0.1);
+}
+
+.option-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.option-desc {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.player-name {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+  color: #a0aec0;
+}
+
+.scoreboard {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.player-score {
+  flex: 1;
+  min-width: 120px;
+  background: #2d3748;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.player-name-score {
+  font-weight: 600;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-points {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.question-container {
+  background: #2d3748;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.options-container {
+  display: grid;
+  gap: 12px;
+}
+
+.option {
+  background: #4a5568;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.option:hover {
+  background: #4facfe;
+  transform: translateY(-2px);
+}
+
+.timer-bar {
+  height: 4px;
+  background: #4a5568;
+  border-radius: 2px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.timer-progress {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #fc8181 0%, #f87979 50%, #d53f8c 100%);
+  animation: progress 8s linear;
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.sprint-timer {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fc8181;
+  margin: 15px 0;
+}
+
+.error-message {
+  color: #fc8181;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .game-mode, .category-select {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+}

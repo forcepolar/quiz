@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ConQUIZtador 3</title>
+  
+  <!-- Подключение Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+  
+  <!-- Стили -->
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- Главный экран -->
+  <div class="container screen active" id="home-screen">
+    <header>
+      <h1>ConQUIZtador 3</h1>
+      <p class="tagline">Играйте с друзьями в локальной сети</p>
+    </header>
+    
+    <div class="room-list" id="room-list">
+      <div style="text-align: center; padding: 30px; color: #a0aec0;">
+        Загрузка комнат...
+      </div>
+    </div>
+    
+    <button class="btn" id="create-room-btn">Создать комнату</button>
+  </div>
+
+  <!-- Экран создания комнаты -->
+  <div class="container screen" id="create-room-screen">
+    <header>
+      <h1>Новая игра</h1>
+      <p class="tagline">Настройте игру и начните</p>
+    </header>
+    
+    <div id="error-container"></div>
+    
+    <input type="text" class="input" id="player-name" placeholder="Ваше имя" maxlength="15">
+    
+    <div class="form-group">
+      <label class="form-label">Название комнаты</label>
+      <input type="text" class="input" id="room-name" placeholder="Например: 'Комната победы'" maxlength="30">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Режим игры</label>
+      <div class="game-mode">
+        <div class="option-card selected" data-mode="duel">
+          <div class="option-title">Дуэль</div>
+          <div class="option-desc">1 vs 1</div>
+        </div>
+        <div class="option-card" data-mode="alliance-1v2">
+          <div class="option-title">Союз</div>
+          <div class="option-desc">1 vs 2</div>
+        </div>
+        <div class="option-card" data-mode="alliance-2v2" style="grid-column: span 2">
+          <div class="option-title">Союз</div>
+          <div class="option-desc">2 vs 2</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Темы вопросов (можно выбрать несколько)</label>
+      <div class="category-select">
+        <div class="option-card" data-category="Биология">
+          <div class="option-title">Биология</div>
+        </div>
+        <div class="option-card" data-category="Медицина">
+          <div class="option-title">Медицина</div>
+        </div>
+        <div class="option-card" data-category="Арифметика">
+          <div class="option-title">Арифметика</div>
+        </div>
+        <div class="option-card" data-category="Здоровье">
+          <div class="option-title">Здоровье</div>
+        </div>
+        <div class="option-card" data-category="История">
+          <div class="option-title">История</div>
+        </div>
+        <div class="option-card" data-category="Страны">
+          <div class="option-title">Страны</div>
+        </div>
+        <div class="option-card" data-category="Столицы">
+          <div class="option-title">Столицы</div>
+        </div>
+        <div class="option-card" data-category="Войны">
+          <div class="option-title">Войны</div>
+        </div>
+        <div class="option-card" data-category="Литература">
+          <div class="option-title">Литература</div>
+        </div>
+        <div class="option-card" data-category="География">
+          <div class="option-title">География</div>
+        </div>
+        <div class="option-card" data-category="Философия">
+          <div class="option-title">Философия</div>
+        </div>
+        <div class="option-card" data-category="Кино">
+          <div class="option-title">Кино</div>
+        </div>
+        <div class="option-card" data-category="Сериалы">
+          <div class="option-title">Сериалы</div>
+        </div>
+        <div class="option-card" data-category="Великие Люди">
+          <div class="option-title">Великие Люди</div>
+        </div>
+      </div>
+    </div>
+    
+    <button class="btn" id="start-game-btn">Создать игру</button>
+    <button class="btn" id="back-to-home">← Назад</button>
+  </div>
+
+  <!-- Игровой экран -->
+  <div class="container screen" id="game-screen">
+    <div class="player-name" id="player-name-display"></div>
+    
+    <div class="scoreboard" id="scoreboard"></div>
+    
+    <div class="question-container">
+      <div class="question-text" id="question-text"></div>
+      <div class="timer-bar" id="timer-bar">
+        <div class="timer-progress"></div>
+      </div>
+      <div class="options-container" id="options-container"></div>
+    </div>
+  </div>
+
+  <!-- Скрипты -->
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
